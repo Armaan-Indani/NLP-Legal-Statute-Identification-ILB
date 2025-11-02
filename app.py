@@ -192,9 +192,9 @@ def transcribe_audio(audio_file, asr_model, language_code):
         st.error(f"Transcription failed: {e}")
         return None
 
-def translate_to_english_googletrans(text):
+def translate_to_english_googletrans(text, language_code):
     try:
-        result = translator.translate(text, dest='en')
+        result = translator.translate(text, dest='en', src=language_code)
         result.text = result.text.replace(".", ". ")
         return result.text
     except Exception as e:
@@ -374,7 +374,7 @@ def main():
            
             if not is_english and original_input:
                 st.markdown("##### Step 2: Translating to English...")
-                translated_text = translate_to_english_googletrans(original_input)
+                translated_text = translate_to_english_googletrans(original_input, selected_lang_code)
                 
                 if translated_text:
                     input_text = translated_text
