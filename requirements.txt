@@ -2,6 +2,7 @@ streamlit
 transformers
 torch
 pandas
-librosa 
+librosa
+googletrans
 soundfile
 faster-whisper
